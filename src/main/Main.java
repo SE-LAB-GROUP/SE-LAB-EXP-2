@@ -1,6 +1,9 @@
 package main;
 
-import main.classes.*;
+import main.classes.Book;
+import main.classes.Library;
+import main.classes.SearchByType;
+import main.classes.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

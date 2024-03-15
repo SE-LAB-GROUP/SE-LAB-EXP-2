@@ -46,5 +46,6 @@ public class Main {
         var keys = new ArrayList<Object>(Arrays.asList(10, 11));
         library.searchBooks(SearchByType.ID, keys); // Should return [book1, book2]
         library.searchBooks(SearchByType.NAME, keys); // Should return null
+
     }
 }

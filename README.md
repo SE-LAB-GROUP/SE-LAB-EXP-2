@@ -1,7 +1,7 @@
 # Software Engineering Lab Experiment 2
 
 
-## Eperiment Report
+## Experiment Report
 Tasks were defined by th PO for this particular experiment
 
 <img width="1000" alt="image" src="https://github.com/SE-LAB-GROUP/SE-LAB-EXP-2/assets/79265257/aa3d6eff-2d66-4546-a1c6-ad77f5520452">
@@ -27,6 +27,7 @@ After:
 
 #### searchBooks
 
+This part was like the previous part when we wrote first the TestBooks and then the searchBooks function(you can check it based on commits).
 
 ### Fixing the Bugs
 
@@ -45,6 +46,7 @@ The problem is that in Library lenBook function, the condition where the student
 
 #### Bug 2
 
+The bug was about removing the book from list of student's books when he/she returns the book and checking book and student aren't null(you can check it based on commits).
 
 ## Questions
 

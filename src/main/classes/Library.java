@@ -21,6 +21,10 @@ public class Library {
         students.add(student);
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
     /**
      * Lends a book to a student. Removes the book from the library and adds it to the student's list.
      * This operation fails if the library doesn't have the student or the book or the student already has the book.
@@ -36,6 +40,11 @@ public class Library {
         }
         if (student.hasBook(book)) {
             System.out.println("!! Student already has the book.");
+            return false;
+        }
+
+        if (!this.students.contains(student)) {
+            System.out.println("!! Student is not a member.");
             return false;
         }
 

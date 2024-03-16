@@ -92,21 +92,24 @@ public class Library {
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
+        ArrayList<Student> result = new ArrayList<>();
         if (searchByType == SearchByType.ID && keys.get(0) instanceof Integer) {
-            int id = (int) keys.get(0);
-            ArrayList<Student> result = new ArrayList<>();
-            for (Student student : students) {
-                if (student.getId() == id) {
-                    result.add(student);
+            for (Object key : keys) {
+                int id = (int) key;
+                for (Student student : students) {
+                    if (student.getId() == id) {
+                        result.add(student);
+                    }
                 }
             }
             return result;
         } else if (searchByType == NAME && keys.get(0) instanceof String) {
-            String name = (String) keys.get(0);
-            ArrayList<Student> result = new ArrayList<>();
-            for (Student student : students) {
-                if (student.getName().equals(name)) {
-                    result.add(student);
+            for (Object key : keys) {
+                String name = (String) key;
+                for (Student student : students) {
+                    if (student.getName().equals(name)) {
+                        result.add(student);
+                    }
                 }
             }
             return result;

@@ -22,8 +22,6 @@ public class StudentTest {
         Student student2 = testStudents.get(1);
         Student student3 = testStudents.get(2);
 
-        System.out.println(student1 + " " + student2 + " " + student3);
-
         // Search for student by ID
         ArrayList<Object> keys = new ArrayList<>();
         keys.add(2); // Search for student with ID 2
@@ -36,13 +34,15 @@ public class StudentTest {
 
         // Search for student by name
         keys = new ArrayList<>();
-        keys.add("Alice"); // Search for student with name "Alice"
+        keys.add("Alice");
+        keys.add("John");
         result = testLibrary.searchStudents(SearchByType.NAME, keys);
 
         // Check if the result contains the expected student
         assertNotNull(result);
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
         assertEquals(student2, result.get(0));
+        assertEquals(student1, result.get(1));
     }
 
     public ArrayList<Object> createTestObjects() {

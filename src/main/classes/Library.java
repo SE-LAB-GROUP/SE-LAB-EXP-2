@@ -63,12 +63,18 @@ public class Library {
      * @return Returns true if the operation is successful and false otherwise.
      */
     public boolean returnBook(Book book, Student student) {
+        if (book == null || student == null) {
+            System.out.println("!! Book or Student is null.");
+            return false;
+        }
+
         if (!this.students.contains(student)) {
             System.out.println("!! Student " + student.getName() + " not registered.");
             return false;
         }
         if (student.hasBook(book)) {
             this.books.add(book);
+            student.removeBook(book);
             System.out.println(student.getName() + " returned " + book.getTitle() + ".");
             return true;
         }

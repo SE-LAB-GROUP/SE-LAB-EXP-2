@@ -2,6 +2,8 @@ package main.classes;
 
 import java.util.ArrayList;
 
+import static main.classes.SearchByType.NAME;
+
 public class Library {
     private ArrayList<Book> books;
     private ArrayList<Student> students;
@@ -19,6 +21,10 @@ public class Library {
         students.add(student);
     }
 
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
     /**
      * Lends a book to a student. Removes the book from the library and adds it to the student's list.
      * This operation fails if the library doesn't have the student or the book or the student already has the book.
@@ -34,6 +40,11 @@ public class Library {
         }
         if (student.hasBook(book)) {
             System.out.println("!! Student already has the book.");
+            return false;
+        }
+
+        if (!this.students.contains(student)) {
+            System.out.println("!! Student is not a member.");
             return false;
         }
 
@@ -75,8 +86,27 @@ public class Library {
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        if (searchByType == SearchByType.ID && keys.get(0) instanceof Integer) {
+            int id = (int) keys.get(0);
+            ArrayList<Student> result = new ArrayList<>();
+            for (Student student : students) {
+                if (student.getId() == id) {
+                    result.add(student);
+                }
+            }
+            return result;
+        } else if (searchByType == NAME && keys.get(0) instanceof String) {
+            String name = (String) keys.get(0);
+            ArrayList<Student> result = new ArrayList<>();
+            for (Student student : students) {
+                if (student.getName().equals(name)) {
+                    result.add(student);
+                }
+            }
+            return result;
+        } else {
+            return null; // For title or author, return null as per the method's contract
+        }
     }
 
     /**

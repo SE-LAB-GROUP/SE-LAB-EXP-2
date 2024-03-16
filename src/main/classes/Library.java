@@ -43,6 +43,11 @@ public class Library {
             return false;
         }
 
+        if (!this.students.contains(student)) {
+            System.out.println("!! Student is not a member.");
+            return false;
+        }
+
         this.books.remove(book);
         student.addBook(book);
         System.out.println(book.getTitle() + " lent to " + student.getName() + ".");

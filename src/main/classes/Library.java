@@ -2,6 +2,8 @@ package main.classes;
 
 import java.util.ArrayList;
 
+import static main.classes.SearchByType.NAME;
+
 public class Library {
     private ArrayList<Book> books;
     private ArrayList<Student> students;
@@ -75,8 +77,27 @@ public class Library {
      * @return             The list of students that match the search criteria. Returns null if search type is title or author.
      */
     public ArrayList<Student> searchStudents(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        if (searchByType == SearchByType.ID && keys.get(0) instanceof Integer) {
+            int id = (int) keys.get(0);
+            ArrayList<Student> result = new ArrayList<>();
+            for (Student student : students) {
+                if (student.getId() == id) {
+                    result.add(student);
+                }
+            }
+            return result;
+        } else if (searchByType == NAME && keys.get(0) instanceof String) {
+            String name = (String) keys.get(0);
+            ArrayList<Student> result = new ArrayList<>();
+            for (Student student : students) {
+                if (student.getName().equals(name)) {
+                    result.add(student);
+                }
+            }
+            return result;
+        } else {
+            return null; // For title or author, return null as per the method's contract
+        }
     }
 
     /**

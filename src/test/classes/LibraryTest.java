@@ -43,4 +43,29 @@ public class LibraryTest {
         assertFalse(library.lendBook(book, non_member_student));
         assertTrue(library.getBooks().contains(book));
     }
+
+    @Test
+    public void testReturnBookSuccess() {
+        library.lendBook(book, student);
+        assertTrue(library.returnBook(book, student));
+        library.returnBook(book, student);
+        assertTrue(library.getBooks().contains(book));
+        assertFalse(student.hasBook(book));
+    }
+
+    @Test
+    public void testReturnBookFailureBookNotInStudentBookList() {
+        Book newBook = new Book("Boostan", "Sadi", 2);
+        library.addBook(newBook);
+        library.lendBook(book, student);
+        assertFalse(library.returnBook(newBook, student));
+        assertTrue(library.returnBook(book, student));
+        assertTrue(library.getBooks().contains(newBook));
+    }
+
+    @Test
+    public void testStudentOrBookNotNull() {
+        assertFalse(library.returnBook(null, student));
+        assertFalse(library.returnBook(book, null));
+    }
 }

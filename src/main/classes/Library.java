@@ -127,8 +127,45 @@ public class Library {
      * @return             The list of books that match the search criteria. Returns null if search type is name.
      */
     public ArrayList<Book> searchBooks(SearchByType searchByType, ArrayList<Object> keys) {
-        // TODO complete function
-        return null;
+        if (searchByType == SearchByType.NAME) {
+            return null;
+        }
+
+        ArrayList<Book> matchingBooks = new ArrayList<>();
+
+        for (Book book : this.books) {
+            switch (searchByType) {
+                case ID:
+                    for (Object key : keys) {
+                        if (key instanceof Integer && book.getId() == (Integer) key) {
+                            matchingBooks.add(book);
+                            break;
+                        }
+                    }
+                    break;
+                case TITLE:
+                    for (Object key : keys) {
+                        if (book.getTitle().equals(key)) {
+                            matchingBooks.add(book);
+                            break;
+                        }
+                    }
+                    break;
+                case AUTHOR:
+                    for (Object key : keys) {
+                        if (book.getAuthor().equals(key)) {
+                            matchingBooks.add(book);
+                            break;
+                        }
+                    }
+                    break;
+                default:
+                    System.out.println("Unknown search type: " + searchByType);
+                    break;
+            }
+        }
+
+        return matchingBooks;
     }
 
     /**
